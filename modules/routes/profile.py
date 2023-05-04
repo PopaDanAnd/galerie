@@ -8,3 +8,4 @@ async def profile_route(username: str):
     if not account:
         return '404', 404
     return await render_page('profile.html', account=account)
+

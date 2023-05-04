@@ -3,13 +3,19 @@
 {% block content %}
 	<h1>
 		{% if not tags %}
-			All posts
+			{% if posts %}
+				All posts
+			{% else %}
+				No posts matching tags
+			{% endif %}
 		{% else %}
 			Posts with tags:
 		{% endif %}
-		{% for tag in tags %}
-			<button class="btn btn-main" title="{{ tag.name }} - {{ tag.description }}">{{ tag.name }}</button>
-		{% endfor %}
+		{% if tags %}
+			{% for tag in tags %}
+				<button class="btn btn-main" title="{{ tag.name }} - {{ tag.description }}">{{ tag.name }}</button>
+			{% endfor %}
+		{% endif %}
 	</h1>
 	<div class="grid-view">
 		{% if posts %}

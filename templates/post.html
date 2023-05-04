@@ -54,9 +54,9 @@
 		<a href="{{ url_for('delpost_route', post_id = post.id )}}" class="btn btn-warn">Delete post</a>
 	{% endif %}
 	
+	<br><br>	
 	{% include 'replies.html' %}
 	
-	<br>	
 	{% if current_account %}
 		{% include 'commentform.html' %}
 	{% else %}

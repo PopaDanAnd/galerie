@@ -18,9 +18,11 @@
   	<div class="nav-right">
 				{% if current_account %}
 					<a class="clickable" href="/profile/{{ current_account.username }}">
-						<span>{{ render_avatar(current_account, "height:3rem;") }}
-						{{ current_account.profile_name }}</span>
+						{{ render_avatar(current_account, "height:3rem; width:3rem;") }}
 					</a>
+					<div class="container"><a class="clickable" href="/profile/{{ current_account.username }}">
+						{{ current_account.profile_name }}
+					</a></div>	
 				{% else %}
 					<a class="clickable" href="/login">Log in</a>
 				{% endif %}

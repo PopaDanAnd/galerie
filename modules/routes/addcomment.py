@@ -33,7 +33,8 @@ async def addcomment_route(post_id: int):
         parent_comment = dbsession.query(Comment).filter(Comment.id == form.parent_id.data).first()
 
         comment = Comment(
-            content=form.text_body.data
+            content=form.text_body.data,
+            upload_ts=int(time.time())
         )
 
         if parent_comment:

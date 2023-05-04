@@ -34,13 +34,15 @@ class RegisterForm(Form):
         validators=[validators.NotEmpty()]
     )
 
+    submit_text = "Register"
+
     def get_account(self) -> Account:
         if dbsession.query(Account).filter(Account.username == self.username.data).first():
             self.username.errors.append(
                 f'{ self.username.data } is already used')
         if dbsession.query(Account).filter(Account.profile_name == self.profile_name.data).first():
             self.profile_name.errors.append(
-                f'{ self.username.data } is already used.')
+                f'{ self.profile_name.data } is already used.')
 
         if self.password.data != self.password_confirm.data:
             self.password_confirm.errors.append('Passwords dont match.')
@@ -48,8 +50,8 @@ class RegisterForm(Form):
         if len(self.password.data) < 5:
             self.password.errors.append('Password must be 5 characters in length.')
 
-        if not self.profile_name:
-            self.profile_name = self.username
+        if not self.profile_name.data:
+            self.profile_name.data = self.username.data
 
         if self.errors:
             return None

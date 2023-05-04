@@ -6,5 +6,9 @@
 	{{ render_field( form.username, form.id ) }}
 	{{ render_field( form.profile_name, form.id ) }}
 	{{ render_field( form.avatar, form.id ) }}
+	<img id="preview-img" style="width:50%">
+	{{ render_field( form.new_password, form.id ) }}
+	{{ render_field( form.new_password_confirm, form.id ) }}
+	{{ render_field( form.password, form.id ) }}
 	<input form="{{ form.id }}" type="submit" class="btn btn-main" value="{{ form.submit_text }}">
 {% endblock content %}

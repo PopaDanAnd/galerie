@@ -3,6 +3,7 @@
 {% block title %}{{ account.profile_name }}{% endblock title %}
 {% block content %}
 
+{{ render_avatar(current_account, "height:10rem; width:10rem;") }}
 <h1>{{ account.profile_name }}</h1>
 <h3>@{{ account.username }}
 	{% if current_account.power_level == 99 %}

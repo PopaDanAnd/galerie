@@ -5,7 +5,7 @@
 			{{ field.label }}
 		</label>
 		<input form="{{ form_name }}" id="{{ field.name }}" type="{{ field.type }}" name="{{ field.name }}" {% if field.type != 'checkbox' %}class="form-item"{% else %}class="form-checkbox"{% endif %} {% for c in field.attributes %} {{ c }} {% endfor %}>
-		<div class="form-item error" id="{{ field.name }}-errors"></div>
+		<div id="{{ field.name }}-errors"></div>
 	</div>
 {% endmacro %}
 

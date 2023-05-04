@@ -94,14 +94,14 @@ function setText(fieldId, fieldText) {
   inputField.value = fieldText;
 }
 
-function handlePreview(fieldId){
-	var field = document.getElementById(fieldId);
-	if(!field) return;
-	field.onchange = function () {
-		var src = URL.createObjectURL(field.files[0]);
-		document.getElementById('preview-img').src = src;
-	}
+function handlePreview(fieldId) {
+  var field = document.getElementById(fieldId);
+  if (!field) return;
+  field.onchange = function () {
+    var src = URL.createObjectURL(field.files[0]);
+    document.getElementById("preview-img").src = src;
+  };
 }
 
-handlePreview('file');
-handlePreview('avatar');
+handlePreview("file");
+handlePreview("avatar");

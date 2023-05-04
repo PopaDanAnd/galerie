@@ -7,7 +7,9 @@
 			{% else %}
 				{{ reply.uploader.profile_name }} replies to #{{ reply.parent_id }}:
 			{% endif %}
-			<button class="btn btn-main" onclick="setText('parent_id', '{{ reply.id }}')">Reply</button>
+			{% if current_account %}
+				<button class="btn btn-main" onclick="setText('parent_id', '{{ reply.id }}')">Reply</button>
+			{% endif %}
 			{% if current_account == reply.uploader or current_account.power_level == 99 %}
 				<a class="btn btn-warn" href="{{ url_for( 'delcomment_route', comment_id = reply.id ) }}">Delete</a>
 			{% endif %}

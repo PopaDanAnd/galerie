@@ -5,7 +5,7 @@ from forms import Form, Field, validators
 
 
 def get_posts_by_tags(tags: list):
-    return dbsession.query(Post).join(Post.tags).filter(Tag.id.in_([tag.id for tag in tags])).group_by(Post.id).having(func.count(Tag.id) == len(tags))
+    return dbsession.query(Post).join(Post.tags).filter(Tag.id.in_([tag.id for tag in tags])).group_by(Post.id).having(func.count(Tag.id) == len(tags)).order_by(desc(Post.views))
 
 
 class SearchForm(Form):
@@ -17,6 +17,9 @@ class SearchForm(Form):
 
     def get_posts(self):
         tags: list = []
+        if not self.tag_list.data:
+            return [], []
+
         for tag_name in self.tag_list.data.split():
             tag = dbsession.query(Tag).filter(Tag.name == tag_name).first()
             if tag:

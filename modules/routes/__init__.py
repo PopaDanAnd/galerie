@@ -14,6 +14,7 @@ from routes.profile import profile_route
 from routes.delpost import delpost_route
 from routes.deltag import deltag_route
 from routes.delcomment import delcomment_route
+from routes.editprofile import editprofile_route
 
 
 from routes.common import *
@@ -40,6 +41,7 @@ app.add_url_rule('/delpost/<int:post_id>', 'delpost_route', delpost_route)
 app.add_url_rule('/delcomment/<int:comment_id>', 'delcomment_route', delcomment_route)
 app.add_url_rule('/deltag/<int:tag_id>', 'deltag_route', deltag_route)
 app.add_url_rule('/addcomment/<int:post_id>', 'addcomment_route', addcomment_route, methods=['POST'])
+app.add_url_rule('/editprofile', 'editprofile_route', editprofile_route, methods=['GET','POST'])
 
 
 @app.before_request

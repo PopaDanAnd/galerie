@@ -8,13 +8,12 @@ footer {
 }
 
 html {
-  background-color: #191e29;
   font-family: sans-serif;
-  text-shadow: 2px 2px 8px #000000;
+	background-color: #f0f0f0;
 }
 
 html * {
-  color: #f0e6dc;
+	color: #202020;
 }
 
 main {
@@ -35,25 +34,20 @@ main {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  background-color: #12151d;
+  background-color: #c0c0c0;
   background-clip: padding-box;
   border: none;
   border-radius: 8px;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  box-shadow: 0 0 0.5rem 0px rgba(0, 0, 0, 0.6);
   width: 100%;
   box-sizing: border-box;
   resize: vertical;
 }
 
 .form-item:focus {
-  border-color: #d1681e;
   outline: 0;
-  box-shadow: none;
 }
 
 .form-item:hover {
-  box-shadow: 0 0 0.125rem 0px rgba(0, 0, 0, 0.6);
 }
 
 .form-checkbox {
@@ -64,13 +58,12 @@ main {
 .btn {
   transition: all 0.15s ease-in;
   text-decoration: none;
-  text-shadow: 2px 2px 8px #000000;
+	color: #303030;
 }
 
 .clickable:hover,
 .btn:hover {
   filter: brightness(85%);
-  text-shadow: none;
 }
 
 .btn {
@@ -86,14 +79,17 @@ main {
   text-decoration: none;
   border-color: #fff;
   border: 2px;
+	color: #f0e6dc;
 }
 
 .btn-main {
   background-color: #d1681e;
+	color: #f0e6dc;
 }
 
 .btn-warn {
   background-color: #b22222;
+	color: #f0e6dc;
 }
 
 .navbar {
@@ -121,7 +117,7 @@ main {
 
 .nav-right {
   float: right;
-	display: flex;
+  display: flex;
 }
 
 .grid-view {
@@ -149,16 +145,16 @@ main {
 .table td {
   padding: 0.75rem;
   vertical-align: top;
-  border-top: 1px solid #dee2e6;
+  border-top: 1px solid #303030;
 }
 
 .table thead th {
   vertical-align: bottom;
-  border-bottom: 2px solid #dee2e6;
+  border-bottom: 2px solid #303030;
 }
 
 .table tbody + tbody {
-  border-top: 2px solid #dee2e6;
+  border-top: 2px solid #303030;
 }
 
 .table-sm th,
@@ -167,16 +163,18 @@ main {
 }
 
 .table-border {
-  border: 1px solid #dee2e6;
+  border: 1px solid #303030;
 }
 
 .table-border th,
 .table-border td {
-  border: 1px solid #dee2e6;
+  border: 1px solid #303030;
 }
 
 .container {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .photo-item {
@@ -195,7 +193,7 @@ main {
   overflow: hidden;
   height: 100%;
   width: 100%;
-  background-color: black;
+  background-color: #303030;
 }
 
 .photo-frame-small {
@@ -203,13 +201,12 @@ main {
   overflow: hidden;
   height: 10rem;
   width: 10rem;
-  background-color: black;
+  background-color: #303030;
 }
 
 .photo {
   max-height: 40rem;
   max-width: 100%;
-  box-shadow: 0 0 0.5rem 0px rgba(0, 0, 0, 0.6);
 }
 
 .frame-bg {
@@ -241,10 +238,10 @@ main {
 }
 
 .avatar {
-	display:block;
-	border-radius: 50%;
-	object-fit: cover;
-	object-position: center;
+  display: block;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
 }
 
 @media only screen and (max-width: 600px) {
@@ -256,20 +253,20 @@ main {
     width: 100%;
     height: initial;
   }
-	.navbar {
-		padding: 20px;
-		height: initial;
-	}
-	.nav-left,
-	.nav-right,
-	.nav-middle {
-		width: 100%;	
-		position: initial;
-		transform: initial;
-		left: initial;
-	}
-	.navbar {
-		display: flex;
-		flex-direction: column;	
-	}
+  .navbar {
+    padding: 20px;
+    height: initial;
+  }
+  .nav-left,
+  .nav-right,
+  .nav-middle {
+    width: 100%;
+    position: initial;
+    transform: initial;
+    left: initial;
+  }
+  .navbar {
+    display: flex;
+    flex-direction: column;
+  }
 }

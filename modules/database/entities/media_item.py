@@ -14,8 +14,8 @@ class MediaItem(Base):
 
     @property
     def local_path(self) -> Path:
-        return Path('data/res').joinpath('thumb' if self.mediatype == 'thumb' else 'img').joinpath(self.filename)
+        return Path('data/res').joinpath(self.mediatype).joinpath(self.filename)
 
     @property
     def server_path(self) -> str:
-        return str(Path('/res').joinpath('thumb' if self.mediatype == 'thumb' else 'img').joinpath(self.filename))
+        return str(Path('/res').joinpath(self.mediatype).joinpath(self.filename))

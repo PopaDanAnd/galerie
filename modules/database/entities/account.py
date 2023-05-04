@@ -29,7 +29,8 @@ class Account(Base):
         cascade='all, delete'
     )
 
-    avatars = relationship(
+    avatar = relationship(
         'MediaItem',
-        cascade='all, delete'
+        cascade='all, delete',
+        uselist=False
     )
