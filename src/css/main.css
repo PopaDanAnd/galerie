@@ -1,0 +1,275 @@
+html,
+body,
+header,
+footer {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+html {
+  background-color: #191e29;
+  font-family: sans-serif;
+  text-shadow: 2px 2px 8px #000000;
+}
+
+html * {
+  color: #f0e6dc;
+}
+
+main {
+  margin: auto;
+  padding: 1.5rem;
+  padding-top: 2rem;
+  width: 80%;
+  box-sizing: border-box;
+}
+
+.container {
+  margin: 0.375rem;
+}
+
+.form-item {
+  display: block;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  background-color: #12151d;
+  background-clip: padding-box;
+  border: none;
+  border-radius: 8px;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  box-shadow: 0 0 0.5rem 0px rgba(0, 0, 0, 0.6);
+  width: 100%;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+.form-item:focus {
+  border-color: #d1681e;
+  outline: 0;
+  box-shadow: none;
+}
+
+.form-item:hover {
+  box-shadow: 0 0 0.125rem 0px rgba(0, 0, 0, 0.6);
+}
+
+.form-checkbox {
+  padding-left: 1.5rem;
+}
+
+.clickable,
+.btn {
+  transition: all 0.15s ease-in;
+  text-decoration: none;
+  text-shadow: 2px 2px 8px #000000;
+}
+
+.clickable:hover,
+.btn:hover {
+  filter: brightness(85%);
+  text-shadow: none;
+}
+
+.btn {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn > * {
+  text-decoration: none;
+  border-color: #fff;
+  border: 2px;
+}
+
+.btn-main {
+  background-color: #d1681e;
+}
+
+.btn-warn {
+  background-color: #b22222;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  padding: 0 20px;
+  position: relative;
+}
+
+.nav-left {
+  float: left;
+}
+
+.nav-left > * {
+  margin-right: 1rem;
+}
+
+.nav-middle {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nav-right {
+  float: right;
+	display: flex;
+}
+
+.grid-view {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  grid-gap: 2rem;
+  grid-auto-rows: minmax(16rem, auto);
+}
+
+.grid-view-small {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+  grid-gap: 1rem;
+  grid-auto-rows: minmax(6rem, auto);
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}
+
+.table-sm th,
+.table-sm td {
+  padding: 0.3rem;
+}
+
+.table-border {
+  border: 1px solid #dee2e6;
+}
+
+.table-border th,
+.table-border td {
+  border: 1px solid #dee2e6;
+}
+
+.container {
+  display: flex;
+}
+
+.photo-item {
+  border-radius: 0.75rem;
+  height: 100%;
+}
+
+.photo-card {
+  background-color: #12151d;
+  height: 100%;
+  width: 100%;
+}
+
+.photo-frame {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+}
+
+.photo-frame-small {
+  position: relative;
+  overflow: hidden;
+  height: 10rem;
+  width: 10rem;
+  background-color: black;
+}
+
+.photo {
+  max-height: 40rem;
+  max-width: 100%;
+  box-shadow: 0 0 0.5rem 0px rgba(0, 0, 0, 0.6);
+}
+
+.frame-bg {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  filter: blur(5px) brightness(85%);
+  object-fit: cover;
+}
+
+.frame-fg {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  object-fit: contain;
+}
+
+.indent {
+  padding-left: 1rem;
+}
+
+.error {
+  background-color: #b22222;
+  padding: initial;
+}
+
+.error > * {
+  padding: 0.375rem 0.75rem;
+}
+
+.avatar {
+	display:block;
+	border-radius: 50%;
+	object-fit: cover;
+	object-position: center;
+}
+
+@media only screen and (max-width: 600px) {
+  main {
+    padding: 0;
+    width: 90%;
+  }
+  .photo {
+    width: 100%;
+    height: initial;
+  }
+	.navbar {
+		padding: 20px;
+		height: initial;
+	}
+	.nav-left,
+	.nav-right,
+	.nav-middle {
+		width: 100%;	
+		position: initial;
+		transform: initial;
+		left: initial;
+	}
+	.navbar {
+		display: flex;
+		flex-direction: column;	
+	}
+}

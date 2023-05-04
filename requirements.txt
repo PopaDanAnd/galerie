@@ -1,0 +1,6 @@
+quart
+sqlalchemy
+uvicorn
+pillow
+aiofiles
+argon2-cffi

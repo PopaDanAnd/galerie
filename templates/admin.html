@@ -1,0 +1,64 @@
+
+{% extends "base.html" %}
+{% block content %}
+	<h1>Accounts</h1>
+	<table class="table table-border">
+		<thead>
+			<tr>
+				<th scope="row">id</th>
+				<th scope="row">username</th>
+				<th scope="row">display name</th>
+				<th scope="row">post count</th>
+				<th scope="row">power level</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for account in accounts %}
+				<tr>
+					<td>{{ account.id }}</td>
+					<td>{{ account.username }}</td>
+					<td>{{ account.profile_name }}</td>
+					<td>{{ '0' if account.posts == None else account.posts | length }}</td>
+					<td>{{ account.power_level }}</td>
+				</tr>
+				<tr>
+					<td colspan=5>
+						<a class="clickable btn btn-red" href="/delaccount/{{ account.id }}">delete</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<h1>Tags</h1>
+	<table class="table table-border">
+		<thead>
+			<tr>
+				<th scope="col">id</th>
+				<th scope="col">name</th>
+				<th scope="col">description</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for tag in tags %}
+				<tr>
+					<td>{{ tag.id }}</td>
+					<td>{{ tag.name }}</td>
+					<td>{{ tag.description }}</td>
+				</tr>
+				<tr>
+					<td colspan=3>
+						<a class="clickable btn btn-red" href="/deltag/{{ tag.id }}">delete</a></td>
+					</td>	
+				</tr>
+			{% endfor %}
+		</tbody>
+		<tfoot>
+			<td colspan=3>
+			<input form="addtag_form" id="tag_name" name="tag_name" class="form-item" type="text" placeholder="Tag name">
+			<input form="addtag_form" id="tag_description" name="tag_description" class="form-item" type="text" placeholder="Tag description">
+			<input form="addtag_form" class="btn btn-main" type="submit" value="Add tag">
+			</td>
+		</tfoot>
+	</table>
+	<form id="addtag_form" method="post" action="/addtag"></form>
+{% endblock content %}

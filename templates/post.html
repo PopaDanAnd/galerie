@@ -1,0 +1,65 @@
+
+{% extends "base.html" %}
+{% block title %}{{ post.title }}{% endblock title %}
+{% block content %}
+
+	<h1>{{ post.title }}</h1>
+	
+	{% for mediaitem in post.mediaitems %}
+		{% if mediaitem.mediatype == 'image' %}
+			<img class="photo" src="{{ mediaitem.server_path }}">
+		{% endif %}
+	{% endfor %}
+
+	{% if post.parent_post %}
+		<p>This post is a child of <a href="{{ url_for( 'post_route', post_id = post.parent_post.id )}}">#{{ post.parent_post.id }} - {{ post.parent_post.title }}</a>:</p>
+		<div class="grid-view-small">
+			{{ render_card(post.parent_post, 'photo-frame-small') }}
+		</div>
+	{% endif %}
+
+	{% if post.child_posts %}
+		<p>This post has {{ post.child_posts | length }} children:</p>
+		<div class="grid-view-small">
+			{% for p in post.child_posts %}
+				{{ render_card(p, 'photo-frame-small') }}
+			{% endfor %}
+		</div>
+	{% endif %}
+
+	{% if post.description %}	
+		<p>Description: {{ post.description }}</p>
+	{% else %}
+		<p>No description provided.</p>
+	{% endif %}	
+
+	<p>{{ post.views }}	views</p>
+	
+	<p>Tags:
+		{% for tag in post.tags %}
+			<button class="btn btn-main" title="{{ tag.name }} - {{ tag.description }}">{{ tag.name }}</button>
+		{% endfor %}
+	</p>	
+
+	<p>Uploaded on: <span data-timestamp="{{ post.upload_ts }}">{{ post.upload_ts }}</span>
+	
+	{% if post.upload_ts != post.edit_ts %}
+		Edited on: <span data-timestamp="{{ post.edit_ts }}">{{ post.edit_ts }}</span>
+	{% endif %}
+	</p>
+
+	<p>Uploaded by: <a class="clickable" href="/profile/{{ post.uploader.username }}">{{ render_name(post.uploader) }}</a></p>
+
+	{% if current_account == post.uploader or current_account.power_level == 99 %}
+		<a href="{{ url_for('delpost_route', post_id = post.id )}}" class="btn btn-warn">Delete post</a>
+	{% endif %}
+	
+	{% include 'replies.html' %}
+	
+	<br>	
+	{% if current_account %}
+		{% include 'commentform.html' %}
+	{% else %}
+		<p>Log in to post a comment.</p>
+	{% endif %}
+{% endblock content %}

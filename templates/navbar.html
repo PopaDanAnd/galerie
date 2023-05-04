@@ -1,0 +1,28 @@
+
+<nav class="navbar">
+
+  	<div class="nav-left">
+			<a class="clickable" href="/">Index</a>
+			{% if current_account %}
+				<a class="btn btn-main clickable" href='/upload'>upload</a>	
+			{% endif %}
+		</div>
+
+  	<div class="nav-middle">
+			<form action="/search" class="container" method="get">
+  			<input id="tag_list" name="tag_list" type="text" class="form-item" placeholder="Search..">
+ 				<button type="submit" class="btn btn-main clickable">Search</button>
+			</form>
+		</div>
+		
+  	<div class="nav-right">
+				{% if current_account %}
+					<a class="clickable" href="/profile/{{ current_account.username }}">
+						<span>{{ render_avatar(current_account, "height:3rem;") }}
+						{{ current_account.profile_name }}</span>
+					</a>
+				{% else %}
+					<a class="clickable" href="/login">Log in</a>
+				{% endif %}
+		</div>
+</nav>

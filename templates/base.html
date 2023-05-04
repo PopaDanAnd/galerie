@@ -1,0 +1,74 @@
+
+{% macro render_field( field, form_name ) %}
+	<div>
+		<label for="{{ field.name }}">
+			{{ field.label }}
+		</label>
+		<input form="{{ form_name }}" id="{{ field.name }}" type="{{ field.type }}" name="{{ field.name }}" {% if field.type != 'checkbox' %}class="form-item"{% else %}class="form-checkbox"{% endif %} {% for c in field.attributes %} {{ c }} {% endfor %}>
+		<div class="form-item error" id="{{ field.name }}-errors"></div>
+	</div>
+{% endmacro %}
+
+{% macro render_form( form ) %}
+	{% for field in form.fields %}
+		{{ render_field( field, form.id ) }}	
+	{% endfor %}
+	<input form="{{ form.id }}" type="submit" class="clickable btn btn-main" value="{{ form.submit_text }}">
+{% endmacro %}
+
+{% macro render_frame(post, frame_type) %}
+	{% for mediaitem in post.mediaitems %}
+		{% if mediaitem.mediatype == 'thumb' %}
+			{% if frame_type %}
+				<div class="{{ frame_type }}">
+			{% else %}
+				<div class="photo-frame">
+			{% endif %}
+				<img class="frame-bg" src="{{ mediaitem.server_path }}">
+				<img class="frame-fg" src="{{ mediaitem.server_path }}">
+			</div>
+		{% endif %}
+	{% endfor %}
+{% endmacro %}
+
+{% macro render_card(post, frame_type) %}
+	<div class="photo-item">
+		<a class="clickable" href="{{ url_for( 'post_route', post_id = post.id ) }}">
+			{{ render_frame(post, frame_type) }}
+		</a>
+	</div>
+{% endmacro %}
+
+{% macro render_name(account) %}
+	{% if account.profile_name %}
+		{{ account.profile_name }}
+	{% else %}
+		{{ account.username }}
+	{% endif %}
+{% endmacro %}
+
+{% macro render_avatar(account, style) %}
+	<img style="{{ style }}" class="avatar" src="
+		{% if account.avatar %}
+			{{ account.avatar.server_path }}
+		{% else %}
+			/res/img/avatar.png
+		{% endif %}
+	">
+{% endmacro %}
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link rel="stylesheet" href="/res/css/main.css">
+		<title>{% block title %}{% endblock title %}</title>
+	</head>
+	<body>
+		{% include 'navbar.html' %}
+		<main>
+			{% block content %}
+			{% endblock content %}
+		</main>
+	</body>
+	<script src="/res/js/main.js"></script>
+</html>

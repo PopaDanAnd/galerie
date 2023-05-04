@@ -1,0 +1,17 @@
+
+<form id="addcomment_form" action="/addcomment/{{ post.id }}" method="post"></form>
+<div>
+	<label for="parent_id">
+		Reply to:
+	</label>
+	<input form="addcomment_form" id="parent_id" type="text" name="parent_id" class="form-item">
+	<div id="parent_id-errors"></div>
+</div>
+<div>
+  <label for="text_body">
+    Body:
+  </label>
+  <textarea form="addcomment_form" id="text_body" name="text_body" class="form-item"></textarea>
+  <div id="text_body-errors"></div>
+</div>
+<input form="addcomment_form" type="submit" class="btn btn-main" value="Post comment">

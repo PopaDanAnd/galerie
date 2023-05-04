@@ -1,0 +1,23 @@
+
+{% extends "base.html" %}
+{% block content %}
+	<h1>
+		{% if not tags %}
+			All posts
+		{% else %}
+			Posts with tags:
+		{% endif %}
+		{% for tag in tags %}
+			<button class="btn btn-main" title="{{ tag.name }} - {{ tag.description }}">{{ tag.name }}</button>
+		{% endfor %}
+	</h1>
+	<div class="grid-view">
+		{% if posts %}
+			{% for post in posts %}
+				{{ render_card(post) }}
+			{% endfor %}
+		{% else %}
+			<p>No posts found.</p>
+		{% endif %}
+	</div>
+{% endblock content %}

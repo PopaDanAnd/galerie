@@ -1,0 +1,29 @@
+
+{% extends "base.html" %}
+{% block title %}{{ account.profile_name }}{% endblock title %}
+{% block content %}
+
+<h1>{{ account.profile_name }}</h1>
+<h3>@{{ account.username }}
+	{% if current_account.power_level == 99 %}
+		<button class="btn btn-main clickable"><a href="/admin">Administrator settings</a></button>
+	{% endif %}
+	{% if current_account.id == account.id %}
+		<button class="btn btn-main clickable"><a href="/editprofile">Edit profile</a></button>
+		<button class="btn btn-warn clickable"><a href="/logout">Logout</a></button>
+	{% endif %}
+</h3>
+<p>Registered on: <span data-timestamp="{{ account.registration_ts }}">{{ account.registration_ts }}</span></p>
+
+<h1>{{ account.profile_name }}'s posts:</h1>
+<div class="grid-view">
+	{% for post in account.posts %}
+		{{ render_card(post) }}
+	{% endfor %}
+</div>
+
+{% if not account.posts %}
+	<p>{{ account.profile_name }} has no posts.</p>
+{% endif %}
+
+{% endblock content %}

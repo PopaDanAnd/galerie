@@ -1,0 +1,5 @@
+data/galerie.db
+venv
+*.swp
+**/__pycache__/
+data/*

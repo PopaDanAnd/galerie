@@ -1,0 +1,10 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+	<form id="editprofile_form" action="/editprofile" method="post" enctype="multipart/form-data"></form>
+	{{ render_field( form.username, form.id ) }}
+	{{ render_field( form.profile_name, form.id ) }}
+	{{ render_field( form.avatar, form.id ) }}
+	<input form="{{ form.id }}" type="submit" class="btn btn-main" value="{{ form.submit_text }}">
+{% endblock content %}
